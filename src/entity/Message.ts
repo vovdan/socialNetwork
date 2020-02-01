@@ -10,7 +10,6 @@ export class Message {
     @Column()
     content: string;
 
-    
     @Column()
     date_created: Date;
 

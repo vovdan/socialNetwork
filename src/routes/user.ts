@@ -8,8 +8,8 @@ router.get("/me", [checkJwt], UserController.getCurrent);
 
 router.patch("/me", [checkJwt], UserController.editUser);
 
-router.get("/me", [checkJwt], UserController.getAll);
+router.get("/me/followings", [checkJwt], UserController.getAllFollowing);
 
-router.post("/me", [checkJwt], UserController.followUser);
+router.post("/me/follow", [checkJwt], UserController.followUser);
 
 export default router;

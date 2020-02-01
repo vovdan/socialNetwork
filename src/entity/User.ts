@@ -17,6 +17,7 @@ import { Message } from "./Message";
 import { Like } from "./Like";
 import { Request } from "express";
 import { Post } from "./Post";
+import { Following } from "./Following";
 
 @Entity()
 @Unique(["email"])
@@ -83,6 +84,14 @@ export class User {
 
     @OneToMany(type => Like, like => like.user)
     likes: Like[];
+
+    @ManyToMany(type => Following, following => following.users, {
+        cascade: true
+    })
+    @JoinTable({
+        name: "user_has_tasks"
+    })
+    followings: Following[];
 
     hashPassword() {
         this.password = bcrypt.hashSync(this.password, 10);
